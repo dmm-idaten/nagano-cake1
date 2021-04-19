@@ -4,7 +4,7 @@
       <h2>商品一覧</h2>
     </div>
     <div class="col">
-      <%= link_to new_admin_item_path do %>
+      <%= link_to new_admins_item_path do %>
         <p>＋</p>
       <% end %>
     </div>
@@ -21,7 +21,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @items each do |item| %>
+        <% @items.each do |item| %>
         <tr>
           <td><%= item.id %></td>
           <td><%= item.name %></td>
@@ -29,6 +29,7 @@
           <td><%= item.genre_id %></td>
           <td><%= item.is_active %></td>
         </tr>
+        <% end %>
       </tbody>
     </div>
   </div>
