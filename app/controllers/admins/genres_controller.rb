@@ -1,10 +1,10 @@
-class GenresController < ApplicationController
-  
+class Admins::GenresController < ApplicationController
+
   def index
     @genre_new = Genre.new
     @genres = Genre.all
   end
-  
+
   def edit
     @genre = Genre.find(params[:id])
   end

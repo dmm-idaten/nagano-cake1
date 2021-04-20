@@ -1,57 +1,47 @@
 
+<%= render "layouts/customer_header"  %>
 
 <main>
-    <div class = "container">
-        <div class='row'>
-            <div class="col">
-
-                <h2>マイページ</h2>
-
-                <!--Current userの編集画面へ遷移させる-->
-                <h3>登録情報</h3>
-                <%= link_to '編集', edit_customer_path%>
-
+  <div class = "container">
+    <div class='row'>
+      <div class="col">
+        <h2>マイページ</h2>
+          <!--Current userの編集画面へ遷移させる-->
+            <h3>登録情報</h3>
+              <%= link_to '編集', edit_customer_path%>
                 <table class = 'table'>
-                    <!--customer情報をそれぞれ入れる-->
-                    <tr>
-                        <td class = 'information'>氏名</td>
-                        <td><%= @customer.last_name %><%= @customer.first_name %></td>
-                    </tr>
-
-                    <tr>
-                        <td class = 'information'>カナ</td>
-                        <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
-                    </tr>
-
-                    <tr>
-                        <td class = 'information'>郵便番号</td>
-                        <td><%= @customer.postal_code %></td>
-                    </tr>
-
-                    <tr>
-                        <td class = 'information'>住所</td>
-                        <td><%= @customer.address %></td>
-                    </tr>
-
-                    <tr>
-                        <td class = 'information'>電話番号</td>
-                        <td><%= @customer.telephone_number %></td>
-                    </tr>
-
-                    <tr>
-                        <td class = 'information'>メールアドレス</td>
-                        <td><%= @customer.email %></td>
-                    </tr>
-
+                  <!--customer情報をそれぞれ入れる-->
+                  <tr>
+                    <td class = 'information'>氏名</td>
+                    <td><%= @customer.last_name %><%= @customer.first_name %></td>
+                  </tr>
+                  <tr>
+                    <td class = 'information'>カナ</td>
+                    <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+                  </tr>
+                  <tr>
+                    <td class = 'information'>郵便番号</td>
+                    <td><%= @customer.postal_code %></td>
+                  </tr>
+                  <tr>
+                    <td class = 'information'>住所</td>
+                    <td><%= @customer.address %></td>
+                  </tr>
+                  <tr>
+                    <td class = 'information'>電話番号</td>
+                    <td><%= @customer.telephone_number %></td>
+                  </tr>
+                  <tr>
+                    <td class = 'information'>メールアドレス</td>
+                    <td><%= @customer.email %></td>
+                  </tr>
                 </table>
-
                 <!--各リンク先のパスを入れる-->
-                <div class = 'other-information'>
-                    配送先<%= link_to '一覧を見る' %>
-                    注文履歴<%= link_to '一覧を見る' %>
-                </div>
-
+            <div class = 'other-information'>
+              配送先<%= link_to '一覧を見る' %>
+              注文履歴<%= link_to '一覧を見る' %>
             </div>
-        </div>
+      </div>
     </div>
+  </div>
 </main>
