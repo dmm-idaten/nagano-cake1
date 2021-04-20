@@ -2,11 +2,10 @@ Rails.application.routes.draw do
 
   devise_for :customers
 
-  resources :customers do
+  resources :customers, only: [:show, :edit, :update] do
     get 'confirm'
     patch 'withdrawl'
   end
-
 
 
   devise_for :admins, :controllers => {
@@ -26,7 +25,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:create, :index, :edit, :update]
   end
-
+  
   root :to => "homes#top"
   get "homes/about" => "homes#about"
 end
