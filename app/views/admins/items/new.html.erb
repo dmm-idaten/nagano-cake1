@@ -30,7 +30,10 @@
         </tr>
         <tr>
           <td>販売ステータス</td>
-          <td><%= f.select :is_active, [['販売中',0],['販売停止中',1]], { include_blank: true, selected: 0 } %></td>
+          <td>
+            <label><%= f.radio_button :is_active, "true" %>販売中</label>
+            <label><%= f.radio_button :is_active, "false" %>販売停止中</label>
+          </td>
         </tr>
       </tbody>
     </table>
