@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :customers
 
-  resources :customers do
+  resources :customers,only: [:show, :edit, :update] do
     get 'confirm'
-    patch 'withdrawl'
+    patch 'withdraw'
   end
 
 
