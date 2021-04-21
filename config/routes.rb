@@ -25,7 +25,11 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:create, :index, :edit, :update]
   end
-  
+
+  namespace :customers do
+    resources :cart, only: [:index, :update, :create, :destroy]
+  end
+
   root :to => "homes#top"
   get "homes/about" => "homes#about"
 end
