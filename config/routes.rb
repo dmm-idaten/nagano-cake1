@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   devise_for :customers
 
-
   resources :customers,only: [:show, :edit, :update] do
     get 'confirm'
     patch 'withdraw'
@@ -25,6 +24,8 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:create, :index, :edit, :update]
+    resources :orders, only: [:show, :update]
+    resource :order_details, only: [:update]
   end
 
   namespace :customers do
