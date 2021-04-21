@@ -1,11 +1,12 @@
 <%= render "layouts/admin_header" %>
 
 <div class="container">
+  <p id="notice"><%= notice %></p>
   <div class="row">
     <h1>新規登録</h1>
   </div>
   <div class="row">
-    <%= form_with model: @new_item, url: admins_items_path do |f| %>
+    <%= form_with model: @new_item, url: admins_items_path, local:true do |f| %>
     <table>
       <tbody>
         <tr>
@@ -22,7 +23,9 @@
         </tr>
         <tr>
           <td>ジャンル</td>
-          <td></td>
+          <td>
+            <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "ジャンルを選択してください" %>
+          </td>
         </tr>
         <tr>
           <td>税抜価格</td>
@@ -31,12 +34,17 @@
         <tr>
           <td>販売ステータス</td>
           <td>
-            <label><%= f.radio_button :is_active, "true" %>販売中</label>
-            <label><%= f.radio_button :is_active, "false" %>販売停止中</label>
+            <label>
+              <%= f.radio_button :is_active, :"販売中",checked: true %>
+              <%= f.label :is_active, "販売中", {value: :false, style: "display: inline-block;"} %>
+              <%= f.radio_button :is_active, :"販売停止中" %>
+              <%= f.label :is_active, "販売停止中", {value: :true, style: "display: inline-block;"} %>
+            </label>
           </td>
         </tr>
       </tbody>
     </table>
+    <%= f.submit '新規登録',  class: "btn btn-success" %>
     <% end %>
   </div>
 </div>
