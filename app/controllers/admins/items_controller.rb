@@ -25,6 +25,14 @@ class Admins::ItemsController < ApplicationController
 
 
   def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      flash[:notice] = "商品を更新しました"
+      redirect_to admins_item_path(@item)
+    else
+      flash[:notice] = "商品の更新に失敗しました"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def edit
@@ -33,7 +41,7 @@ class Admins::ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :introduction, :image, :genre_id, :price, :is_active)
+    params.require(:item).permit(:name, :introduction, :image, :genre, :price, :is_active)
   end
   
 end
