@@ -2,11 +2,11 @@ Rails.application.routes.draw do
 
   devise_for :customers
 
+
   resources :customers,only: [:show, :edit, :update] do
     get 'confirm'
     patch 'withdraw'
   end
-
 
 
   devise_for :admins, :controllers => {
@@ -25,6 +25,10 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:create, :index, :edit, :update]
+  end
+
+  namespace :customers do
+    resources :cart, only: [:index, :update, :create, :destroy]
   end
 
   root :to => "homes#top"
