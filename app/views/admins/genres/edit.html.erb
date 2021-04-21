@@ -1,6 +1,8 @@
 
+<%= render "layouts/admin_header" %>
+
 <h2>ジャンル編集</h2>
-<%= form_with model: @genre, url: edit_admins_genre, local:true do |f| %>
+<%= form_with model: @genre, url: edit_admins_genre_path, local:true do |f| %>
 <table>
     <th><h4>ジャンル名</h4></th>
     <th><%= f.text_field :name %></th>
