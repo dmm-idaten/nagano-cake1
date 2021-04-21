@@ -5,7 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def active_for_authentication?
-    super && (is_deleted == false)
+    super && (self.is_deleted == "有効")
   end
   enum is_deleted: { '有効': false, '退会': true }
   

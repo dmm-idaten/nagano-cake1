@@ -1,7 +1,10 @@
+<%= render "layouts/admin_header" %>
+
 <div class="container">
+  <p id="notice"><%= notice %></p>
   <h2>商品詳細</h2>
   <div class="row">
-    <div class="col"><%= attachment_image_tag(@item, :image, :fill, 100, 100,  fallback: "no_image .jpeg") %></div>
+    <div class="col"><%= attachment_image_tag(@item, :image, :fill, 500, 300,  fallback: "no_image .jpeg") %></div>
     <div class="col">
       <table class="table">
         <tbody>
@@ -15,7 +18,7 @@
           </tr>
           <tr>
             <td>ジャンル</td>
-            <td><%= @item.genre_id %></td>
+            <td><%= @item.genre.name %></td>
           </tr>
           <tr>
             <td>税込価格（税抜価格）</td>
@@ -31,3 +34,5 @@
     </div>
   </div>
 </div>
+
+<%= render "layouts/footer" %>
