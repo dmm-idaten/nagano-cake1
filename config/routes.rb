@@ -29,8 +29,10 @@ Rails.application.routes.draw do
 
   namespace :customers do
     resources :cart, only: [:index, :update, :create, :destroy]
+     delete 'cart' => 'cart#destroy_all'
   end
 
   root :to => "homes#top"
   get "homes/about" => "homes#about"
+
 end

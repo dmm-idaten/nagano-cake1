@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   has_one :genre
+  belongs_to :cart
 
   attachment :image
   
