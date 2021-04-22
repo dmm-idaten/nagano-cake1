@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
   devise_for :customers
+  
+  namespace :customers do
+    resources :carts, only: [:index, :update, :create, :destroy]
+     delete 'carts' => 'carts#destroy_all'
+  end
 
   resources :customers,only: [:show, :edit, :update] do
     get 'confirm'
@@ -26,11 +31,6 @@ Rails.application.routes.draw do
     resources :genres, only: [:create, :index, :edit, :update]
     resources :orders, only: [:show, :update]
     resource :order_details, only: [:update]
-  end
-
-  namespace :customers do
-    resources :cart, only: [:index, :update, :create, :destroy]
-     delete 'cart' => 'cart#destroy_all'
   end
 
   root :to => "homes#top"
