@@ -1,13 +1,23 @@
 Rails.application.routes.draw do
 
-  devise_for :customers
+  scope module: :customers do
+    devise_for :customers
+  end
 
+  resources :carts, only: [:index, :update, :create, :destroy] do
+    delete 'carts' => 'cart#destroy_all'
+  end
+  
+  resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
+  resources :customers, only: [:show, :edit, :update] do
+    get 'confirm'
+    patch 'withdraw'
+  end
 
   devise_for :admins, :controllers => {
     :registrations => 'admins/registrations',
     :sessions => 'admins/sessions'
-
   }
 
   devise_scope :admins do
@@ -22,17 +32,6 @@ Rails.application.routes.draw do
     resources :genres, only: [:create, :index, :edit, :update]
     resources :orders, only: [:show, :update]
     resource :order_details, only: [:update]
-  end
-
-  namespace :customers do
-    resources :items, only: [:index, :show]
-    resources :cart, only: [:index, :update, :create, :destroy]
-     delete 'cart' => 'cart#destroy_all'
-  end
-  
-  resources :customers,only: [:show, :edit, :update] do
-    get 'confirm'
-    patch 'withdraw'
   end
 
   root :to => "homes#top"

@@ -1,6 +1,7 @@
-class Cstomers::CartsController < ApplicationController
+class Customers::CartsController < ApplicationController
   
   def index
+    @cart_item = @cart.item
   end
   
   def create
@@ -13,6 +14,12 @@ class Cstomers::CartsController < ApplicationController
   end
 
   def destroy_all
+  end
+  
+
+    private
+  def cart_params
+    params.require(:cart).permit(:amount)
   end
   
 end
