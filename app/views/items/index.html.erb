@@ -1,7 +1,7 @@
 
 <%= render 'layouts/customer_header' %>
 
-<div class="container">
+<div class="container w-75">
   <div class="row">
     <div class="col">
     <div class="col mt-5">
@@ -11,10 +11,14 @@
   </div>
   <div class="row d-flex justify-content-center">
     <% @items.each do |item| %>
-    <div class="col mt-3">
-      <%= attachment_image_tag(item, :image, :fill, 250, 180,  fallback: "no_image .jpeg", size:'250x180') %><br>
-      <%= item.name %><br>
-      <%= item.price %>円<br>
+    <div class="col-md-3 mt-3">
+      <div></div><%= attachment_image_tag(item, :image, :fill, 250, 180,  fallback: "no_image .jpeg", size:'250x180') %><br>
+      <div>
+        <%= link_to item_path(item) do %>
+        <%= item.name %><br>
+        <% end %>
+      </div>
+      <div>¥<%= item.price %></div>
     </div>
     <% end %>
   </div>

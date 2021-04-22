@@ -1,0 +1,18 @@
+<%= render 'layouts/customer_header' %>
+
+<div class="container w-75 mt-5">
+  <div class="row">
+    <div class="col offset-1"><%= attachment_image_tag(@item, :image, :fill, 350, 250,  fallback: "no_image .jpeg", size:'400x250') %></div>
+    <div class="col ">
+      <h1><%= @item.name %></h1>
+      <div class="setumei"><%= @item.introduction %></div>
+      <div class="mt-4 d-flex border-box">
+        <span><h2><%= @item.add_tax_price %></h2></span>
+        <span><p>（税込）</p></span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<%= render "layouts/footer" %>

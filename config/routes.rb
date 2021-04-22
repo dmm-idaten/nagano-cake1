@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :carts, only: [:index, :update, :create, :destroy] do
     delete 'carts' => 'cart#destroy_all'
   end
-  
+
+  resources :items, only: [:index, :show]
+
   resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
   resources :customers, only: [:show, :edit, :update] do
