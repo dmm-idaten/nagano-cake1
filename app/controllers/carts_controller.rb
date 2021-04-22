@@ -1,4 +1,4 @@
-class Costomers::CartsController < ApplicationController
+class CartsController < ApplicationController
   
   def index
   end
