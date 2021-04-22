@@ -1,3 +1,5 @@
+<%= render 'layouts/customer_header' %>
+
 <h1>本当に退会しますか？</h1>
 
 退会すると、会員登録情報や
@@ -5,6 +7,6 @@
 退会する場合は、「退会する」をクリックしてください。
 
 <div class = 'other-information'>
-    <%= link_to '退会しない' %>
-    <%= link_to '退会する' %>
+    <%= link_to '退会しない', customer_path(current_customer) %>
+    <%= link_to '退会する', customer_withdraw_path, method: :patch %>
 </div>

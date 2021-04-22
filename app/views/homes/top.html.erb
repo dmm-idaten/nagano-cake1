@@ -1,3 +1,6 @@
+
+<%= render 'layouts/customer_header' %>
+
 <div class="container">
   <div class="row">
     <div class="col">
@@ -17,8 +20,17 @@
     </div>
   </div>
   <div class="row">
+    <% @items.first(5). each do |item| %>
     <div class="col">
-      
+      <%= attachment_image_tag(item, :image, :fill, 250, 180,  fallback: "no_image .jpeg") %><br>
+      <%= item.name %><br>
+      <%= item.price %>円<br>
+    </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col offset-9 mt-3">
+      <a href="">もっと見る</a>
     </div>
   </div>
 </div>

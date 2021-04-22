@@ -1,22 +1,39 @@
+<%= render "layouts/admin_header" %>
 
-<h2>会員一覧</h2>
+<div class="container">
+	<div class="row">
+    <div class="col mt-5">
+      <h2>会員一覧</h2>
+    </div>
+  </div>
+  <div class="row">
+  	<div class="col mt-8">
+  		<table class="table">
+	      <thead>
+		      <tr>
+			      <th>会員ID</th>
+			      <th>氏名</th>
+			      <th>メールアドレス</th>
+			      <th>ステータス</th>
+		      </tr>
+	      </thead>
+	      <tbody>
+		      <% @customers.each do |customer| %>
+		        <tr>
+			        <td><%= customer.id %></td>
+			        <td>
+			        	<%= link_to admins_customer_path(customer) do %>
+			        	  <%= customer.last_name %><%= customer.first_name %>
+			        	<% end %>
+			        </td>
+			        <td><%= customer.email %></td>
+			        <td><%= customer.is_deleted %></td>
+		        </tr>
+		      <% end %>
+	      </tbody>
+      </table>
+  	</div>
+  </div>
+</div>
 
-<table>
-	<thead>
-		<tr>
-			<th>会員ID</th>
-			<th>氏名</th>
-			<th>メールアドレス</th>
-			<th>ステータス</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<%# 下記内容はeachにてデータを引っ張ってくる %>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-	</tbody>
-</table>
+<%= render "layouts/footer" %>

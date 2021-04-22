@@ -2,16 +2,16 @@ Rails.application.routes.draw do
 
   devise_for :customers
 
-  resources :customers do
+  resources :customers,only: [:show, :edit, :update] do
     get 'confirm'
-    patch 'withdrawl'
+    patch 'withdraw'
   end
-
 
 
   devise_for :admins, :controllers => {
     :registrations => 'admins/registrations',
     :sessions => 'admins/sessions'
+
   }
 
   devise_scope :admins do
@@ -20,13 +20,20 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  namespace :admin do
+  namespace :admins do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
-    
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:create, :index, :edit, :update]
+    resources :orders, only: [:show, :update]
+    resource :order_details, only: [:update]
   end
 
-  resources :genres, only: [:create, :index, :edit, :update]
+  namespace :customers do
+    resources :cart, only: [:index, :update, :create, :destroy]
+     delete 'cart' => 'cart#destroy_all'
+  end
 
   root :to => "homes#top"
   get "homes/about" => "homes#about"
+
 end
