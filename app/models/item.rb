@@ -1,9 +1,13 @@
 class Item < ApplicationRecord
 
-  #belongs_to :cart
+  # belongs_to :cart
   belongs_to :genre
 
   attachment :image
+  
+  def add_tax_price
+    (self.price * 1.10).round
+  end
 
   # enum genre_id: {'ケーキ':1, 'プリン':2, '焼き菓子':3, 'キャンディ':4}
 
