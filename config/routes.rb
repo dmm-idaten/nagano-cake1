@@ -1,22 +1,24 @@
 Rails.application.routes.draw do
 
-  devise_for :customers
-  
-  namespace :customers do
-    resources :carts, only: [:index, :update, :create, :destroy]
-     delete 'carts' => 'carts#destroy_all'
+  scope module: :customers do
+    devise_for :customers
   end
 
-  resources :customers,only: [:show, :edit, :update] do
+  resources :carts, only: [:index, :update, :create, :destroy] do
+    delete 'carts' => 'cart#destroy_all'
+  end
+  
+  resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+
+
+  resources :customers, only: [:show, :edit, :update] do
     get 'confirm'
     patch 'withdraw'
   end
 
-
   devise_for :admins, :controllers => {
     :registrations => 'admins/registrations',
     :sessions => 'admins/sessions'
-
   }
 
   devise_scope :admins do
