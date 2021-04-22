@@ -4,12 +4,12 @@ Rails.application.routes.draw do
     devise_for :customers
   end
 
-  
   resources :carts, only: [:index, :update, :create, :destroy] do
-    delete 'cart' => 'cart#destroy_all'
+    delete 'carts' => 'cart#destroy_all'
   end
   
   resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+
 
   resources :customers, only: [:show, :edit, :update] do
     get 'confirm'
