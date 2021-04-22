@@ -16,6 +16,7 @@ class Customers::CartsController < ApplicationController
   def destroy_all
   end
   
+
     private
   def cart_params
     params.require(:cart).permit(:amount)

@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   
   resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
-
   resources :customers, only: [:show, :edit, :update] do
     get 'confirm'
     patch 'withdraw'
