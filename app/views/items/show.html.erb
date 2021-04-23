@@ -6,13 +6,19 @@
     <div class="col ">
       <h1><%= @item.name %></h1>
       <div class="setumei"><%= @item.introduction %></div>
-      <div class="mt-4 d-flex border-box">
+      <div class="mt-4 d-flex align-items-end">
         <span><h2><%= @item.add_tax_price %></h2></span>
         <span><p>（税込）</p></span>
       </div>
+      <div>
+        <%= form_with model: @item, local:true do |f| %>
+        <%= f.label :amount, "数量" %>
+        <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
+        <% end %>
+        <%= link_to "カートに入れる", controller: 'cart_items', action: 'add_item', amount: 1, method: :post %>
+      </div>
     </div>
   </div>
-
 </div>
 
 <%= render "layouts/footer" %>
