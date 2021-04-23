@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
 
   # belongs_to :cart
-  belongs_to :genre
+  has_many :genres
 
   attachment :image
   

@@ -7,7 +7,15 @@ Rails.application.routes.draw do
   resources :carts, only: [:index, :update, :create, :destroy] do
     delete 'carts' => 'cart#destroy_all'
   end
-  
+
+  resources :orders, only: [:index, :new, :show, :create]
+
+  namespace :orders do
+    post 'confirm'
+    get 'completa'
+  end
+
+
   resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
 

@@ -3,7 +3,7 @@
 
 
 <div class="container">
-  <h3>ジャンル一覧・追加</h>
+  <h3>ジャンル一覧・追加</h3>
   <div class="row">
     <table>
       <%= form_with model: @genre_new, url: admins_genres_path, local:true do |f| %>
@@ -23,7 +23,7 @@
           <th></th>
         </tr>
       </thead>
-    </div>  
+    </div>
       <tbody>
         <% @genres.each do |genre| %>
         <tr>
