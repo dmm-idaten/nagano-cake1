@@ -1,15 +1,15 @@
 
 <%= render 'layouts/customer_header' %>
 
-<div class="container w-75">
+<div class="container w-75 mb-5">
   <div class="row">
     <div class="col">
-    <div class="col mt-5">
+    <div class="col mt-4 d-flex align-items-end">
       <h2>商品一覧</h2>
       <h4>(全<%= @items.count %>件)</h4>
     </div>
   </div>
-  <div class="row mt-5 d-flex align-items-end">
+  <div class="row  d-flex ">
     <% @items.each do |item| %>
     <div class="col-md-3 mt-3">
       <div></div><%= attachment_image_tag(item, :image, :fill, 250, 180,  fallback: "no_image .jpeg", size:'250x180') %><br>
@@ -23,5 +23,8 @@
     <% end %>
   </div>
   <div class="row">
+    <%= paginate(@items) %>
   </div>
 </div>
+</div>
+<%= render "layouts/footer" %>
