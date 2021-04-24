@@ -11,11 +11,11 @@
         <span><p>（税込）</p></span>
       </div>
       <div>
-        <%= form_with model: @item, local:true do |f| %>
+        <%= form_with model: @cart_item , url: customers_cart_items_path, method: :post local:true do |f| %>
         <%= f.label :amount, "数量" %>
         <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
         <% end %>
-        <%= link_to "カートに入れる", controller: 'cart_items', action: 'add_item', amount: 1, method: :post %>
+        <%= link_to "カートに入れる", controller: 'cart_items', action: 'create', amount: 1, method: :post %>
       </div>
     </div>
   </div>

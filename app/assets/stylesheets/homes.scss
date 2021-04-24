@@ -4,10 +4,12 @@
 
 .top-visual {
   border: 1px solid #000;
-  background-image: url('n.cake2.jpeg');
+  background-image: url('111.jpg');
   height: 350px;
   width: 700px;
-  
+  background-size: cover; 
+  background-position: center; 
+
 }
 
 .text-back {
@@ -19,7 +21,7 @@
 
 .about-image {
   border: 1px solid #000;
-  background-image: url('n.cake2.jpeg');
+  background-image: url('111.jpg');
   height: 250px;
   width: 500px;
   margin: 0 auto;
