@@ -25,8 +25,9 @@
 		      </tr>
 	      </thead>
 	      <tbody>
-		      <% @orders.each do |order| %>
-		        <tr>
+	      	<% if admin_signed_in? %>
+	      		<% @orders.each do |order| %>
+	      		 <tr>
 			        <td><%= order.created_at %></td>
 			        <td>
 			        	<%= order.shipping_postcode %><br>
@@ -37,7 +38,22 @@
 			        <td><%= order.order_status %></td>
 			        <td><%= link_to '表示する', order_path %></td>
 		        </tr>
-		      <% end %>
+		        <% end %>
+	      	<% else %>
+	      	  <% @order.each do |order| %>
+	      	   <tr>
+			        <td><%= order.created_at %></td>
+			        <td>
+			        	<%= order.shipping_postcode %><br>
+			        	<%= order.shipping_address %><br>
+			        	<%= order.shipping_name %>
+			        </td>
+			        <td></td>
+			        <td><%= order.order_status %></td>
+			        <td><%= link_to '表示する', order_path %></td>
+		        </tr>
+		        <% end %>
+	      	<% end %>
 	      </tbody>
       </table>
   	</div>

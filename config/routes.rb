@@ -15,7 +15,6 @@ Rails.application.routes.draw do
     get 'completa'
   end
 
-
   resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
 
