@@ -1,5 +1,4 @@
 class Genre < ApplicationRecord
 
-  
 
 end
