@@ -1,8 +1,5 @@
 class Address < ApplicationRecord
-<<<<<<< HEAD
-=======
-	
-	belongs_to :customer
-	
->>>>>>> origin/develop
+  
+  belongs_to :customer
+  
 end
