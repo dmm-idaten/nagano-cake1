@@ -7,7 +7,7 @@
           <% if customer_signed_in? %>
             <li><%= link_to 'マイページ', customer_path(current_customer), class: "btn btn-light text-warning mr-1" %></li>
             <li><%= link_to '商品一覧', items_path, class: "btn btn-light text-warning mr-1" %></li>
-            <li>カート</li>
+            <li><%= link_to 'カート', carts_path %></li>
             <li><%= link_to ' ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-light text-warning mr-1" %></li>
           <% else %>
             <li><%= link_to 'About', homes_about_path, class: "btn btn-light text-warning mr-1" %></li>
