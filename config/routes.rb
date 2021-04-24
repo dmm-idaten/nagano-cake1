@@ -4,8 +4,15 @@ Rails.application.routes.draw do
     devise_for :customers
   end
 
-  resources :carts, only: [:index, :update, :create, :destroy] do
-    delete 'carts' => 'cart#destroy_all'
+
+  resources :carts, only: [:index, :update, :create, :destroy]
+  delete :carts, to: 'carts#destroy_all'
+
+  resources :orders, only: [:index, :new, :show, :create]
+
+  namespace :orders do
+    post 'confirm'
+    get 'completa'
   end
 
   resources :items, only: [:index, :show]
