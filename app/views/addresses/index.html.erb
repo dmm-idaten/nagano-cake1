@@ -12,10 +12,10 @@
 	    <td>住所</td><td><%= f.text_field :address %></td>
 	  </tr>
 	  <tr>
-	    <td>宛名</td><td><%= f.text_field :telephone_number %></td>
+	    <td>宛名</td><td><%= f.text_field :name %></td>
 	  </tr>
 	  <tr>
-	    <td><%= f.submit '変更を保存', class: "btn btn-success" %></td>
+	    <td><%= f.submit '新規登録', class: "btn btn-success" %></td>
 	  </tr>
 	<% end %>
     </table>
@@ -37,7 +37,7 @@
           <td><%= address.address %></td>
           <td><%= address.name %></td>
           <td>
-          	<%= link_to '編集する', edit_customers_address_path(@address), class: "btn btn-sm btn-success" %>
+          	<%= link_to '編集する', edit_address_path(address), class: "btn btn-sm btn-info" %>
 
          </td>
         </tr>
