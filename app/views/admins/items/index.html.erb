@@ -1,14 +1,14 @@
 <%= render "layouts/admin_header" %>
 
-<div class="container">
+<div class="container mb-5">
   <p id="notice text-success"><%= notice %></p>
   <div class="row my-5">
     <div class="col-sm-2 offset-1 d-flex justify-content-center bg-light text-dark">
       <h2>商品一覧</h2>
     </div>
-    <div class="col offset-5">
+    <div class="col-sm-0 offset-6">
       <%= link_to new_admins_item_path do %>
-        <i class="fas fa-plus-circle"></i>
+        <h1 class="border rounded-circle text-body">＋</h1>
       <% end %>
     </div>
   </div>

@@ -2,37 +2,41 @@
 <%= render "layouts/customer_header"  %>
 
 <main>
-  <div class = "container">
-    <div class='row'>
-      <div class="col">
-        <h2>マイページ</h2>
+  <div class = "container my-5 ">
+    <div class="row">
+      <div class="col-sm-2">
+        <h3 class="offset-1 bg-light">マイページ</h3>
+      </div>
+    </div>
+    <div class='row '>
+      <div class="col-sm-7 ">
           <!--Current userの編集画面へ遷移させる-->
             <h3>登録情報</h3>
             <%= link_to '編集', edit_customer_path, class: "btn btn-sm btn-info"%>
-              <table class = 'table'>
+              <table class = 'table border'>
                 <!--customer情報をそれぞれ入れる-->
                 <tr>
-                  <td class = 'information'>氏名</td>
+                  <td class = 'information border bg-light'>氏名</td>
                   <td><%= @customer.last_name %><%= @customer.first_name %></td>
                 </tr>
                 <tr>
-                  <td class = 'information'>カナ</td>
+                  <td class = 'information border bg-light'>カナ</td>
                   <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
                 </tr>
                 <tr>
-                  <td class = 'information'>郵便番号</td>
+                  <td class = 'information border bg-light'>郵便番号</td>
                   <td><%= @customer.postal_code %></td>
                 </tr>
                 <tr>
-                  <td class = 'information'>住所</td>
+                  <td class = 'information border bg-light'>住所</td>
                   <td><%= @customer.address %></td>
                 </tr>
                 <tr>
-                  <td class = 'information'>電話番号</td>
+                  <td class = 'information border bg-light'>電話番号</td>
                   <td><%= @customer.telephone_number %></td>
                 </tr>
                 <tr>
-                  <td class = 'information'>メールアドレス</td>
+                  <td class = 'information border bg-light'>メールアドレス</td>
                   <td><%= @customer.email %></td>
                 </tr>
               </table>
@@ -45,3 +49,5 @@
     </div>
   </div>
 </main>
+
+<%= render "layouts/footer" %>
