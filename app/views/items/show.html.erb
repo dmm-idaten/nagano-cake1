@@ -1,0 +1,24 @@
+<%= render 'layouts/customer_header' %>
+
+<div class="container w-75 mt-5">
+  <div class="row">
+    <div class="col offset-1"><%= attachment_image_tag(@item, :image, :fill, 350, 250,  fallback: "no_image .jpeg", size:'400x250') %></div>
+    <div class="col ">
+      <h1><%= @item.name %></h1>
+      <div class="setumei"><%= @item.introduction %></div>
+      <div class="mt-4 d-flex align-items-end">
+        <span><h2><%= @item.add_tax_price %></h2></span>
+        <span><p>（税込）</p></span>
+      </div>
+      <div>
+        <%= form_with model: @cart_item , url: customers_cart_items_path, method: :post local:true do |f| %>
+        <%= f.label :amount, "数量" %>
+        <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
+        <% end %>
+        <%= link_to "カートに入れる", controller: 'cart_items', action: 'create', amount: 1, method: :post %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render "layouts/footer" %>

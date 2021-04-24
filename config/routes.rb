@@ -14,7 +14,9 @@ Rails.application.routes.draw do
     post 'confirm'
     get 'completa'
   end
-  
+
+  resources :items, only: [:index, :show]
+
   resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
   resources :customers, only: [:show, :edit, :update] do
