@@ -8,11 +8,18 @@
         <h3 class="offset-1 bg-light">マイページ</h3>
       </div>
     </div>
+    <div class="row my-3">
+      <div class="col-sm-2">
+        <h3>登録情報</h3>
+      </div>
+      <div class="col-sm-2">
+        <%= link_to '編集する', edit_customer_path, class: "btn btn-success  px-3"%>
+      </div>
+    </div>
+
     <div class='row '>
       <div class="col-sm-7 ">
           <!--Current userの編集画面へ遷移させる-->
-            <h3>登録情報</h3>
-            <%= link_to '編集', edit_customer_path%>
               <table class = 'table border'>
                 <!--customer情報をそれぞれ入れる-->
                 <tr>
@@ -42,8 +49,14 @@
               </table>
               <!--各リンク先のパスを入れる-->
             <div class = 'other-information'>
-              配送先<%= link_to '一覧を見る', addresses_path %>
-              注文履歴<%= link_to '一覧を見る', orders_path %>
+              <div class="d-flex align-items-end">
+                <h4 class="mr-5">配送先</h4>
+                <%= link_to '一覧を見る', addresses_path, class: "btn btn-primary" %>
+              </div>
+              <div class="d-flex align-items-end">
+                <h4 class="mr-4">注文履歴</h4>
+                <%= link_to '一覧を見る', orders_path, class: "btn btn-primary mt-3" %>
+              </div>
             </div>
       </div>
     </div>
