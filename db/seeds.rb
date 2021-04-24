@@ -12,16 +12,20 @@ Admin.create!(email: "admin@gmail.com",
 Genre.create!(
    [
     {
-      name: 'ケーキ'
+      name: 'ケーキ',
+      id: '0'
     },
     {
-      name: 'プリン'
+      name: 'プリン',
+      id: '1'
     },
     {
-      name: '焼き菓子'
+      name: '焼き菓子',
+      id: '2'
     },
     {
-      name: 'キャンディ'
+      name: 'キャンディ',
+      id: '3'
     }
   ]
 )
