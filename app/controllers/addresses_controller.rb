@@ -1,4 +1,21 @@
 class AddressesController < ApplicationController
+<<<<<<< HEAD
+
+  def index
+  end
+
+  def create
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+  end
+=======
 	before_action :authenticate_customer!
 
 	def index
@@ -33,5 +50,6 @@ class AddressesController < ApplicationController
 	def address_params
 		params.require(:address).permit(:postal_code, :address, :name)
 	end
+>>>>>>> origin/develop
 
 end
