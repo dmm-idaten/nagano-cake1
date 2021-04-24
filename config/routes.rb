@@ -39,10 +39,12 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:create, :index, :edit, :update]
     resources :orders, only: [:show, :update]
+      get "/", :to => "orders#index", as:"orders"
     resource :order_details, only: [:update]
   end
 
   root :to => "homes#top"
   get "homes/about" => "homes#about"
+
 
 end

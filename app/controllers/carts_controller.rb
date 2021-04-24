@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   before_action :authenticate_customer!
-  
+
   def index
     @carts = current_customer.carts
   end
@@ -21,6 +21,7 @@ class CartsController < ApplicationController
   end
 
 
+
     private
 
   # def current_cart
@@ -38,5 +39,6 @@ class CartsController < ApplicationController
   def cart_params
     params.require(:cart).permit(:amount, :customer_id, :item_id)
   end
+
 
 end

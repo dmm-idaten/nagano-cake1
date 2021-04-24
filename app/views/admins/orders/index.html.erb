@@ -1,5 +1,4 @@
-
-<%= render 'layouts/customer_header' %>
+<%= render "layouts/admin_header" %>
 
 <div class="container">
 	<div class="row">
@@ -33,11 +32,10 @@
 			        <td><%= order.order_status %></td>
 			        <td><%= link_to '表示する', order_path %></td>
 		        </tr>
-	      	<% end %>
+		      <% end %>
 	      </tbody>
       </table>
   	</div>
   </div>
 </div>
-
 <%= render "layouts/footer" %>
