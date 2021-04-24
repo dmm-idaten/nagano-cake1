@@ -2,24 +2,21 @@
 <%= render "layouts/admin_header" %>
 
 
-<div class="container">
-
+<div class="container mb-5">
   <div class="row offset-1">
     <div class="col-sm-4 mt-5">
       <h3 class="d-flex justify-content-center bg-light text-dark">ジャンル一覧・追加</h3>
     </div>
-  <div class="row">
-    <table>
-      
+  </div>
   <%= form_with model: @genre_new, url: admins_genres_path, local:true do |f| %>
   <div class="row mt-5 d-flex align-items-center">
-      <div class="col-sm-2"><h5>ジャンル名</h5></div>
+      <div class="col-sm- mr-2">ジャンル名</div>
       <div class="col-sm-3 form-control-lg"><%= f.text_field :name, placeholder: "ジャンル名" %></div>
       <div class="col-sm-2 ml-3"><%= f.submit '新規登録', class: "btn btn-success btn-lg w-100"%></div>
   </div>
   <% end %>
   <div class="row mt-5">
-    <div class="col-md-6 col-sm-10">
+    <div class="col-md-6">
     <table class="table table-hover table-inverse">
       <thead class="bg-light">
         <tr>
@@ -42,3 +39,5 @@
     </div>
   </div>
 </div>
+
+<%= render "layouts/footer" %>

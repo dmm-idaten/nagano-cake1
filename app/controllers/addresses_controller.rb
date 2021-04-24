@@ -3,13 +3,14 @@ class AddressesController < ApplicationController
 
 	def index
 		@address_new = Address.new
-		@addresses = Address.all
+		@addresses = Address.where(customer_id: current_customer.id)
 	end
 
 	def create
 		@address = Address.new(address_params)
+		@address.customer_id = current_customer.id
+		@addresses = current_customer.address
 		@address.save
-		redirect_to customers_addresses_path
 	end
 
 	def edit
@@ -19,7 +20,7 @@ class AddressesController < ApplicationController
 	def update
 		address = Address.find(params[:id])
 		address.update(address_params)
-		redirect_to customers_addresses_path
+		redirect_to addresses_path
 	end
 
 	def destroy
