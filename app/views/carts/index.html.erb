@@ -1,7 +1,30 @@
 
-<h1>ショッピング</h1>
+<%= render "layouts/admin_header" %>
 
-      <%= form_with model: @cart_item, url: customers_carts_path, local:true do |f| %>
+<h2><i class="fas fa-shopping-cart"></i>ショッピングカート</h2>
+
+  <table class="table-bordered">
+	  <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th></th>
+    </tr>
+    <% @carts.each do |cart| %>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>
+        <%= form_with model:cart, url: cart_path(cart), local:true do |f| %>
         <%= f.select :amount, options_for_select((1..20).to_a) %>
-        <%= f.submit "カートに入れる" %>
-      <% end %>
+        <% end %>
+      </th>
+      <th></th>
+      <th>
+        <%= link_to "Destroy", carts_path, method: :delete, class:"btn btn-danger" %>
+      </th>
+    </tr>
+    <% end %>
+  </table>
+
