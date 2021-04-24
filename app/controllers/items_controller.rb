@@ -5,7 +5,11 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @cart_item = CartItem.new
+    @cart = Cart.new
+  end
+
+  def item_params
+    params.require(:item).permit(:amount)
   end
 
 end
