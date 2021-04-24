@@ -19,9 +19,18 @@
       <h2>新着商品</h2>
     </div>
   </div>
-  <div class="row">
+  <div class="row d-flex justify-content-center">
+    <% @items.first(5). each do |item| %>
     <div class="col">
-
+      <%= attachment_image_tag(item, :image, :fill, 250, 180,  fallback: "no_image .jpeg", size:'250x180') %><br>
+      <%= item.name %><br>
+      <%= item.price %>円<br>
+    </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col offset-9 mt-3">
+      <%= link_to "もっと見る", items_path %>
     </div>
   </div>
 </div>
