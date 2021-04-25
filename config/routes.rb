@@ -42,7 +42,6 @@ Rails.application.routes.draw do
     resources :genres, only: [:create, :index, :edit, :update]
     resources :orders, only: [:show, :update]
       get "/", :to => "orders#index", as:"orders"
-
     resource :order_details, only: [:update]
   end
 
