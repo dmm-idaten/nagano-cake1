@@ -23,18 +23,17 @@
         <%= cart.item.add_tax_price %>
       </th>
       <th>
-        <%= form_with model:cart, url: cart_path(cart), local:true do |f| %>
-        <%= f.select :amount, options_for_select((1..20).to_a) %>
+        <%= form_with model:cart, url: cart_path(cart.id), local:true do |f| %>
+        <%#= f.select :amount,[1,2,3,4,5,6,7,8,9,10]%>
+        <%= f.number_field :amount%>
+        <%= f.submit "変更" ,class:"btn btn-primary" %>
         <% end %>
       </th>
       <th></th>
       <th>
-        <%= link_to "削除する", carts_path(@cart), method: :delete, class:"btn btn-danger" %>
+        <%= link_to "削除する", cart_path(cart.id), method: :delete, class:"btn btn-danger" %>
       </th>
     </tr>
     <% end %>
   </table>
-  <%= form_with model:@order, url: new_order_path, local: true do |f| %>
-    <%= f.submit "カートに入れる", class: "btn btn-primary" %>
-  <% end %>
-  <%= link_to "カートに入れるeasy", new_order_path,class: "btn btn-success" %>
+  <%= link_to "カートに入れる", new_order_path,class: "btn btn-success" %>

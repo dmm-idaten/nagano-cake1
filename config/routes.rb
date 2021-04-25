@@ -4,11 +4,11 @@ Rails.application.routes.draw do
     devise_for :customers
   end
 
+  delete :carts, to: 'carts#destroy_all'
+  resources :carts, only: [:index, :update, :create, :destroy]
+
   get "search" => "searches#search"
 
-  resources :carts, only: [:index, :update, :create, :destroy]
-  delete :carts, to: 'carts#destroy_all'
-  
   resources :orders, only: [:index, :new, :show, :create]
 
   namespace :orders do
