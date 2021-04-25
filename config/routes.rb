@@ -4,9 +4,10 @@ Rails.application.routes.draw do
     devise_for :customers
   end
 
-
-  resources :carts, only: [:index, :update, :create, :destroy]
   delete :carts, to: 'carts#destroy_all'
+  resources :carts, only: [:index, :update, :create, :destroy]
+
+  get "search" => "searches#search"
 
   resources :orders, only: [:index, :new, :show, :create]
 
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :items, only: [:index, :show]
-
+  
   resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
   resources :customers, only: [:show, :edit, :update] do
