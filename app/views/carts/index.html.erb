@@ -1,5 +1,5 @@
 
-<%= render "layouts/admin_header" %>
+<%= render "layouts/customer_header" %>
 
 <h2><i class="fas fa-shopping-cart"></i>ショッピングカート</h2>
 
@@ -13,8 +13,15 @@
     </tr>
     <% @carts.each do |cart| %>
     <tr>
-      <th></th>
-      <th></th>
+      <th>
+        <%= link_to item_path(cart.item_id) do %>
+        <%= attachment_image_tag cart.item, :image, size: "50x50", fallback: "no_image.jpg"%>
+        <%= cart.item.name %>
+        <% end %>
+      </th>
+      <th>
+        <%= cart.item.add_tax_price %>
+      </th>
       <th>
         <%= form_with model:cart, url: cart_path(cart), local:true do |f| %>
         <%= f.select :amount, options_for_select((1..20).to_a) %>
@@ -22,9 +29,12 @@
       </th>
       <th></th>
       <th>
-        <%= link_to "Destroy", carts_path, method: :delete, class:"btn btn-danger" %>
+        <%= link_to "削除する", carts_path(@cart), method: :delete, class:"btn btn-danger" %>
       </th>
     </tr>
     <% end %>
   </table>
-
+  <%= form_with model:@order, url: new_order_path, local: true do |f| %>
+    <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+  <% end %>
+  <%= link_to "カートに入れるeasy", new_order_path,class: "btn btn-success" %>

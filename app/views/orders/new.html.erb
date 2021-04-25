@@ -4,10 +4,10 @@
 	<div class='row'>
 		<div class='col-8'>
 			<h2>注文情報入力</h2>
-			<%= form_with model: @customer, url: admins_customer_path(@customer), local:true do |f| %>
+			<%= form_with model: @customer, url: new_order_path, local:true do |f| %>
 			<table>
 	      <tr>
-	      	<td>会員ID</td><td><%= @customer.id %></td>
+	      	<td>会員ID</td><td><%= current_customer.id %></td>
 	      </tr>
 	      <tr>
 		      <td>氏名</td><td><%= f.text_field :last_name %><%= f.text_field :first_name %></td>
