@@ -1,6 +1,17 @@
 <%= render "layouts/admin_header" %>
 
 <div class='container'>
+
+	<div class='row'>
+		<div class='col-8'>
+			<h2>注文情報入力</h2>
+			<%= form_with model: @customer, url: new_order_path, local:true do |f| %>
+			<table>
+	      <tr>
+	      	<td>会員ID</td><td><%= current_customer.id %></td>
+	      </tr>
+	      
+=======
   <div class='row'>
 	<div class='col-8'>
 	  <h2>注文情報入力</h2>
@@ -24,6 +35,7 @@
 	      	  </li>
 	      	</ul>
 	      	
+
 	      <tr>
 	      	<td><%= f.submit '変更を保存', class: "btn btn-success" %></td>
 	      </tr>
