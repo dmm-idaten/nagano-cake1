@@ -34,7 +34,11 @@
           </td>
           <td><%= item.price %>円</td>
           <td><%= item.genre.name %></td>
-          <td class="text-success"><%= item.is_active %></td>
+          <% if item.is_active == "販売中" %>
+            <td class="text-success"><%= item.is_active %></td>
+          <% else %>
+            <td class="text-secondary"><%= item.is_active %></td>
+          <% end %>
         </tr>
         <% end %>
       </tbody>

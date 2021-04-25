@@ -10,15 +10,18 @@
         <span><h2><%= @item.add_tax_price %></h2></span>
         <span><p>（税込）</p></span>
       </div>
-      <div>
-        <%= form_with model:@cart, url: carts_path, local: true do |f| %>
-          <%= f.label :amount, "数量" %>
-          <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
-          <% if customer_signed_in? %>
-            <%= f.hidden_field :customer_id, :value => current_customer.id %>
+      <div class="my-2">
+        <% if @item.is_active == "販売中" %>
+          <%= form_with model:@cart, url: carts_path, local: true do |f| %>
+            <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10], prompt: "個数を選択" %>
+            <% if customer_signed_in? %>
+              <%= f.hidden_field :customer_id, :value => current_customer.id %>
+            <% end %>
+            <%= f.hidden_field :item_id, :value => @item.id %>
+            <%= f.submit "カートに入れる", class: "btn btn-success" %>
           <% end %>
-          <%= f.hidden_field :item_id, :value => @item.id %>
-          <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+        <% else %>
+          <h3>売り切れ中</h3>
         <% end %>
       </div>
     </div>
