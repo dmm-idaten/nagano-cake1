@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_customer!
 
   def index
     @orders = Order.where(customer_id: current_customer.id)
@@ -12,6 +13,10 @@ class OrdersController < ApplicationController
     @orders = Order.where(customer_id: current_customer.id)
   end
 
+  def confirm
+
+  end
+  
   def create
     @order = current_customer.orders.new(order_params)
     @order.save
@@ -27,9 +32,7 @@ class OrdersController < ApplicationController
      end
   end
 
-  def confirm
-
-  end
+  
 
   def completa
 

@@ -3,7 +3,7 @@ class Order < ApplicationRecord
 	belongs_to :customer
 	has_many :order_details
 
-	enum making_status: {
+	enum payment: {
     クレジットカード: 0,
     銀行振込: 1
   }
