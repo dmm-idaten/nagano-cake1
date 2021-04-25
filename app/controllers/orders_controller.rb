@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = current_user.orders.new(order_params)
+    @order = current_customer.orders.new(order_params)
 　　@order.save
 　　@cart_items = current_user.cart_items.all
      @cart_items.each do |cart_item|
