@@ -1,0 +1,57 @@
+
+<%= render 'layouts/customer_header' %>
+
+<div class="container">
+<% @orders.each do |order| %>
+	<div class="row">
+    <div class="col mt-5">
+      <h2>注文情報確認</h2>
+    </div>
+  </div>
+  <div class="row">
+  	<div class="col mt-8">
+  		<table class="table">
+	      <thead>
+		      <tr>
+			      <th>商品名</th>
+			      <th>単価(税込)</th>
+			      <th>数量</th>
+			      <th>小計</th>
+		      </tr>
+	      </thead>
+	      <tbody>
+	      	<tr>
+			      <td><%= order.item.name %></td>
+			      <td><%= order.item.price %></td>
+			      <td><%= order.order_details.amount %></td>
+			      <td><%= order.order_details.price %></td>
+		      </tr>
+	      </tbody>
+      </table>
+      <table class="table">
+      	<tr>
+      		<td>送料</td><td></td>
+      		<td>商品合計</td><td></td>
+      		<td>請求金額</td><td></td>
+      	</tr>
+      </table>
+  	</div>
+  </div>
+  <div class="row">
+  	<div class="col">
+  		<h3>支払方法</h3>
+  		<div></div>
+  	</div>
+  </div>
+  <div class="row">
+  	<div class="col">
+  		<h3>お届け先</h3>
+  		<div>
+  			
+  		</div>
+  	</div>
+  </div>
+<% end %>
+</div>
+
+<%= render "layouts/footer" %>

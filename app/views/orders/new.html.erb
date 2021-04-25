@@ -1,6 +1,7 @@
 <%= render "layouts/admin_header" %>
 
 <div class='container'>
+
 	<div class='row'>
 		<div class='col-8'>
 			<h2>注文情報入力</h2>
@@ -9,30 +10,32 @@
 	      <tr>
 	      	<td>会員ID</td><td><%= current_customer.id %></td>
 	      </tr>
-	      <tr>
-		      <td>氏名</td><td><%= f.text_field :last_name %><%= f.text_field :first_name %></td>
-	      </tr>
-	      <tr>
-	      	<td>フリガナ</td><td><%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %></td>
-	      </tr>
-	      <tr>
-	      	<td>郵便番号</td><td><%= f.text_field :postal_code %></td>
-	      </tr>
-	      <tr>
-	      	<td>住所</td><td><%= f.text_field :address %></td>
-	      </tr>
-	      <tr>
-	      	<td>電話番号</td><td><%= f.text_field :telephone_number %></td>
-	      </tr>
-	      <tr>
-	      	<td>会員ステータス</td>
-	      	<td>
-	      		<%= f.radio_button :is_deleted, :'有効', checked: true %>
-  					<%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
-					  <%= f.radio_button :is_deleted, :'退会' %>
-					  <%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
-	      	</td>
-	      </tr>
+	      
+=======
+  <div class='row'>
+	<div class='col-8'>
+	  <h2>注文情報入力</h2>
+	    <%= form_with model: @order, url: orders_confirm_path, local:true do |f| %>
+	      <h3>支払方法</h3>
+	        <ul>
+	      	  <li>
+	      	    <%= f.radio_button :payment, :'0', checked: true %>
+	      	  	<%= f.label :payment, "クレジットカード", {value: :0, style: "display: inline-block;"} %>
+	      	  </li>
+	  		  <li>
+	  			<%= f.radio_button :payment, :'1' %>
+	  			<%= f.label :payment, "銀行振込", {value: :0, style: "display: inline-block;"} %>
+	  		  </li>
+	      	</ul>
+	      <h3>お届け先</h3>
+	      	<ul>
+	      	  <li>
+	      	  	<%= f.radio_button :payment, :'0', checked: true %>
+	      	  	<%= f.label :payment, "ご自身の住所", {value: :0, style: "display: inline-block;"} %>
+	      	  </li>
+	      	</ul>
+	      	
+
 	      <tr>
 	      	<td><%= f.submit '変更を保存', class: "btn btn-success" %></td>
 	      </tr>
