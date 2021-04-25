@@ -3,42 +3,45 @@
 <div class="conteiner">
   <div class="row">
     <h2 class="col">配送先登録/一覧</h2>
-	<table class="table">
-	<%= form_with model: @address_new, url: addresses_path, local:true do |f| %>
-	  <tr>
-	    <td>郵便番号</td><td><%= f.text_field :postal_code %></td>
-	  </tr>
-	  <tr>
-	    <td>住所</td><td><%= f.text_field :address %></td>
-	  </tr>
-	  <tr>
-	    <td>宛名</td><td><%= f.text_field :name %></td>
-	  </tr>
-	  <tr>
-	    <td><%= f.submit '新規登録', class: "btn btn-success" %></td>
-	  </tr>
-	<% end %>
-    </table>
+	    <table class="table">
+	      <%= form_with model: @address_new, url: addresses_path, local:true do |f| %>
+	      <tr>
+	        <td>郵便番号</td> 
+	        <td><%= f.text_field :postal_code %></td>
+	      </tr>
+	      <tr>
+	        <td>住所</td>
+	        <td><%= f.text_field :address %></td>
+	      </tr>
+	      <tr>
+	        <td>宛名</td>
+	        <td><%= f.text_field :name %></td>
+	      </tr>
+	      <tr>
+	        <td><%= f.submit '新規登録', class: "btn btn-success" %></td>
+	      </tr>
+	      <% end %>
+      </table>
 
     <div class="col">
       <table class="table">
       	<thead>
-        <tr>
-          <th>郵便番号</th>
-          <th>住所</th>
-          <th>宛名</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @addresses.each do |address| %>
+          <tr>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @addresses.each do |address| %>
         <tr>
           <td><%= address.postal_code %></td>
           <td><%= address.address %></td>
           <td><%= address.name %></td>
           <td>
-          	<%= link_to '編集する', edit_address_path(address), class: "btn btn-sm btn-info" %>
-
+          	<%= link_to '編集', edit_address_path(address), class: "btn btn-sm btn-info" %>
+          	<%= link_to '削除', address_path(address), method: :delete, class: "btn btn-sm btn-danger" %>
          </td>
         </tr>
         <% end %>
@@ -48,3 +51,5 @@
     </div>
   </div>
 </div>
+
+<%= render "layouts/footer" %>

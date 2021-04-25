@@ -11,6 +11,7 @@ class AddressesController < ApplicationController
 		@address.customer_id = current_customer.id
 		@addresses = current_customer.address
 		@address.save
+		redirect_to addresses_path
 	end
 
 	def edit
@@ -24,9 +25,10 @@ class AddressesController < ApplicationController
 	end
 
 	def destroy
-		address = Address.find(params[:id])
-		address.destroy(address_params)
-		redirect_to customers_addresses_path
+		@address = Address.find(params[:id])
+		@address.destroy
+		@addresses = current_customer.address
+		redirect_to addresses_path
 	end
 
 	private
