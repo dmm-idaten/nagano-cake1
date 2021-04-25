@@ -23,7 +23,9 @@
     <% @items.first(5). each do |item| %>
     <div class="col">
       <%= attachment_image_tag(item, :image, :fill, 250, 180,  fallback: "no_image .jpeg", size:'250x180') %><br>
+      <%= link_to item_path(item) do %>
       <%= item.name %><br>
+      <% end %>
       <%= item.price %>円<br>
     </div>
     <% end %>
