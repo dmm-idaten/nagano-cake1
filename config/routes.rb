@@ -9,15 +9,15 @@ Rails.application.routes.draw do
 
   get "search" => "searches#search"
 
-  resources :orders, only: [:index, :new, :show, :create]
-
   namespace :orders do
     post 'confirm'
-    get 'completa'
+    get 'complete'
   end
 
+  resources :orders, only: [:index, :new, :show, :create]
+
   resources :items, only: [:index, :show]
-  
+
   resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
   resources :customers, only: [:show, :edit, :update] do
