@@ -15,13 +15,11 @@ class OrdersController < ApplicationController
 
   def confirm
 
-  end
-  
   def create
     @order = current_customer.orders.new(order_params)
     @order.save
     @carts = current_customer.carts.all
-     @carts.each do |cart|
+    @carts.each do |cart|
         @order_items = @order.order_items.new
         @order_items.item_id = cart.item.id
         @order_items.name = cart.item.name
@@ -32,9 +30,9 @@ class OrdersController < ApplicationController
      end
   end
 
-  
 
-  def completa
+
+  def complete
 
   end
 
