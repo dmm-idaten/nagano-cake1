@@ -2,7 +2,6 @@
 <%= render 'layouts/customer_header' %>
 
 <div class="container">
-<% @orders.each do |order| %>
 	<div class="row">
     <div class="col mt-5">
       <h2>注文情報確認</h2>
@@ -20,19 +19,22 @@
 		      </tr>
 	      </thead>
 	      <tbody>
+	      	<% @carts.each do |cart| %>
 	      	<tr>
-			      <td><%= order.item.name %></td>
-			      <td><%= order.item.price %></td>
-			      <td><%= order.order_details.amount %></td>
-			      <td><%= order.order_details.price %></td>
+			      <td><%= cart.item.name %></td>
+			      <td><%= cart.item.add_tax_price %></td>
+			      <td><%= cart.amount %></td>
+			      <td><%= cart.item.add_tax_price * cart.amount %></td>
 		      </tr>
+		      <% end %>
 	      </tbody>
       </table>
+    <div class="col mt-4">
       <table class="table">
       	<tr>
-      		<td>送料</td><td></td>
-      		<td>商品合計</td><td></td>
-      		<td>請求金額</td><td></td>
+      		<td>送料</td><td>800</td>
+      		<td>商品合計</td><td><%= total_price(@carts) %></td>
+      		<td>請求金額</td><td><%= total_price(@carts) + 800 %></td>
       	</tr>
       </table>
   	</div>
@@ -40,18 +42,30 @@
   <div class="row">
   	<div class="col">
   		<h3>支払方法</h3>
-  		<div></div>
+  		<div><%= @order.payment %></div>
   	</div>
   </div>
   <div class="row">
   	<div class="col">
   		<h3>お届け先</h3>
   		<div>
-  			
+  			<%= @order.shipping_postcode %>
+  			<%= @order.shipping_address %>
+  			<%= @order.shipping_name %>
   		</div>
   	</div>
+  	<%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+        <%= f.hidden_field :shipping_postcode %>
+        <%= f.hidden_field :shipping_address %>
+        <%= f.hidden_field :shipping_name %>
+        <%= f.hidden_field :payment, :value => @order.payment %>
+        <%= f.hidden_field :postage, :value => 800 %>
+        <%= f.hidden_field :total_price, :value => (total_price(@carts) + 800) %>
+        <%= link_to "注文情報入力へ戻る", new_order_path %>
+        <%= f.submit "購入を確定する" %>
+    <% end %>
+      </div>
   </div>
-<% end %>
 </div>
 
 <%= render "layouts/footer" %>
