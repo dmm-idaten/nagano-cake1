@@ -5,6 +5,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <% if customer_signed_in? %>
+            <li class="mr-5"><p class="my-auto bg-light">ようこそ<%= current_customer.last_name %>さん！</p></li>
             <li><%= link_to 'マイページ', customer_path(current_customer), class: "btn btn-light text-warning border border-dark mr-1" %></li>
             <li><%= link_to '商品一覧', items_path, class: "btn btn-light text-warning border border-dark mr-1" %></li>
             <li><%= link_to 'カート', carts_path, class: "btn btn-light text-warning border border-dark mr-1" %></li>

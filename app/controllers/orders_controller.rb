@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
   end
 
   def confirm
+
     @carts = current_customer.carts
     @order = Order.new(order_params)
     if params[:order][:address_option] == "0"
@@ -32,6 +33,7 @@ class OrdersController < ApplicationController
       @order.shipping_name = params[:order][:shipping_name]
     end
   end
+
 
   def create
     @order = current_customer.orders.new(order_params)

@@ -2,7 +2,7 @@
 
 <div class="container w-75 my-5">
   <div class="row">
-    <div class="col offset-1"><%= attachment_image_tag(@item, :image, :fill, 350, 250,  fallback: "no_image .jpeg", size:'400x250') %></div>
+    <div class="col offset-1"><%= attachment_image_tag(@item, :image, :fill, 350, 250,  fallback: "no_image.jpeg", size:'400x250') %></div>
     <div class="col ">
       <h1><%= @item.name %></h1>
       <div class="setumei"><%= @item.introduction %></div>

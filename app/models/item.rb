@@ -10,6 +10,11 @@ class Item < ApplicationRecord
   def add_tax_price
     (self.price * 1.10).round
   end
+  
+  # def subtotal
+  #   amount * price 
+  # end
+  
 
   # enum genre_id: {'ケーキ':1, 'プリン':2, '焼き菓子':3, 'キャンディ':4}
 
