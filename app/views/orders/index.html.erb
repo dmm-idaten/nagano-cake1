@@ -12,7 +12,7 @@
   	  <table class="table border">
 	    <thead>
 		  <tr>
-	        <th class = 'information border bg-light'>注文日</th>
+	    <th class = 'information border bg-light'>注文日</th>
 			<th class = 'information border bg-light'>配送先</th>
 			<th class = 'information border bg-light'>注文商品</th>
 			<th class = 'information border bg-light'>支払金額</th>
@@ -41,6 +41,9 @@
 			  </td>
 			  <td>
 			  	<%= order.order_status %>
+			  </td>
+			  <td>
+			  	<%= link_to "表示する", order_path(order), class: "btn btn-primary" %>
 			  </td>
 		    </tr>
 	      <% end %>
