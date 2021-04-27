@@ -7,8 +7,13 @@ class CartsController < ApplicationController
 
   def create
     @cart = Cart.new(cart_params)
-    @cart.save
+    @item = @cart.item
+    if @cart.save
     redirect_to carts_path
+    else
+      render template: "items/show"
+    end
+    
   end
 
   def update
