@@ -3,19 +3,19 @@
 
 <div class="container">
 	<div class="row">
-    <div class="col mt-5">
+    <div class="col">
       <h2>注文情報確認</h2>
     </div>
   </div>
   <div class="row">
-  	<div class="col mt-8">
-  		<table class="table">
+  	<div class="col">
+  		<table class="table border">
 	      <thead>
 		      <tr>
-			      <th>商品名</th>
-			      <th>単価(税込)</th>
-			      <th>数量</th>
-			      <th>小計</th>
+			      <th class = 'information border bg-light'>商品名</th>
+			      <th class = 'information border bg-light'>単価(税込)</th>
+			      <th class = 'information border bg-light'>数量</th>
+			      <th class = 'information border bg-light'>小計</th>
 		      </tr>
 	      </thead>
 	      <tbody>
@@ -29,15 +29,17 @@
 		      <% end %>
 	      </tbody>
       </table>
-    <div class="col mt-4">
-      <table class="table">
+    <div class="row">
+      <div class="col">
+      <table class="table border">
       	<tr>
-      		<td>送料</td><td>800</td>
-      		<td>商品合計</td><td><%= total_price(@carts) %></td>
-      		<td>請求金額</td><td><%= total_price(@carts) + 800 %></td>
+      		<td class = 'information border bg-light'>送料</td><td>800円</td>
+      		<td class = 'information border bg-light'>商品合計</td><td><%= total_price(@carts) %>円</td>
+      		<td class = 'information border bg-light'>請求金額</td><td><%= total_price(@carts) + 800 %>円</td>
       	</tr>
       </table>
-  	</div>
+      </div>
+    </div>
   </div>
   <div class="row">
   	<div class="col">

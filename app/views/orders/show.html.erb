@@ -1,9 +1,4 @@
-
-<% if admin_signed_in? %>
-  <%= render 'layouts/admin_header' %>
-<% else %>
-  <%= render 'layouts/customer_header' %>
-<% end %>
+<%= render 'layouts/customer_header' %>
 
 <div class="container">
 	<div class="row">
@@ -11,74 +6,19 @@
       <h2>注文履歴詳細</h2>
     </div>
   </div>
-  <% @orders.each do |order| %>
+
   <div class="row">
   	<div class="col mt-8">
-  		<h3>注文情報</h3>
+  		<label>注文情報</label>
   		<table class="table">
+  			<% @order_details.each do |order| %>
 		    <tr>
 			    <td>注文日</td>
 			    <td><%= order.created_at %></td>
 			  </tr>
-			  <tr>
-			  	<td>配送先</td>
-			  	<td>
-			      <%= order.shipping_postcode %><br>
-			      <%= order.shipping_address %><br>
-			      <%= order.shipping_name %>
-			    </td>
-			  </tr>
-			  <tr>
-			  	<td>支払方法</td>
-			  	<td></td>
-			  </tr>
-			  <tr>
-			  	<td>ステータス</td>
-			  	<td><%= order.order_status %></td>
-			  </tr>
+			  <% end %>
 			</table>
 		</div>
 	</div>
 
-		<div class='col-mt-4'>
-			<h3>請求情報</h3>
-			<table class="table">
-		    <tr>
-			    <td>商品合計</td>
-			    <td></td>
-			  </tr>
-			  <tr>
-			  	<td>配送料</td>
-			  	<td>800</td>
-			  </tr>
-			  <tr>
-			  	<td>御請求額</td>
-			  	<td></td>
-			  </tr>
-			</table>
-		</div>
-	<div class='row'>
-		<div class='col-mt-8'>
-			<h3>注文内容</h3>
-			<table>
-				<thead>
-		      <tr>
-			      <th>商品</th>
-			      <th>単価 (税込)</th>
-			      <th>個数</th>
-			      <th>小計</th>
-		      </tr>
-	      </thead>
-	      <tbody>
-		      <tr>
-			      <td><%= customer.id %></td>
-			      <td><%= link_to admins_customer_path(customer) %></td>
-			      <td><%= customer.email %></td>
-			      <td><%= customer.is_deleted %></td>
-		      </tr>
-	      </tbody>
-			</table>
-		</div>
-	</div>
-  <% end %>
 </div>
