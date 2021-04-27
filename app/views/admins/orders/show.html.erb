@@ -1,14 +1,14 @@
 <%= render 'layouts/admin_header' %>
 
-<div class="container">
+<div class="container my-5">
 	<div class="row">
-    <div class="col mt-5">
+    <div class="col offset-1">
       <h2>注文履歴詳細</h2>
   	</div>
   </div>
-  <div class="row">
+  <div class="row mb-4">
   	<div class="col mt-8">
-			<table class="table table-noborder">
+			<table class="table inin table-noborder">
 	      <tr>
 	      	<td class="font-weight-bold">購入者</td>
 					<td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
@@ -33,21 +33,24 @@
 	      	<td class="font-weight-bold">注文ステータス</td>
 	      	<td>
 	      		<%= form_with model:@order, url: admins_order_path, method: :PUT, local: true do |f| %>
-	      		  <%= f.select :order_status, Order.order_statuses.map { |k, v| [t("orderes.order_status.#{k}"), v] }, :selected=> @order.order_status_before_type_cast %>
+	      		  <%= f.select :order_status, Order.order_statuses.map { |k, v| [t("orderes.order_status.#{k}"), v] }, :selected=> @order.order_status_before_type_cast  %>
 	      		  <%= f.submit "更新", class: "btn btn-success" %>
 	      		<% end %>
 	      	</td>
 	      </tr>
 	    </table>
+	  </div>
+	</div>
+  <div class="row d-flex align-items-end">
+	  <div class="col-mt-10">
 	    <table class="table">
 	      <thead>
 		      <tr>
-			      <th class = 'information border bg-light'>商品名</th>
-			      <th class = 'information border bg-light'>単価(税込)</th>
-			      <th class = 'information border bg-light'>数量</th>
-			      <th class = 'information border bg-light'>小計</th>
-			      <th class = 'information border bg-light'>制作ステータス</th>
-			      <th></th>
+			      <th class = 'information border bg-light mx-2'>商品名</th>
+			      <th class = 'information border bg-light mx-2'>単価(税込)</th>
+			      <th class = 'information border bg-light mx-2'>数量</th>
+			      <th class = 'information border bg-light mx-2'>小計</th>
+			      <th class = 'information border bg-light mx-2'>制作ステータス</th>
 		      </tr>
 	      </thead>
 	      <tbody>
@@ -78,21 +81,23 @@
 	      </tbody>
       </table>
     </div>
-    <div class="col mt-8">
-      <table class="table table-noborder">
+    <div class="col-mt-2 offset-1">
+      <table class="table inin table-noborder">
       	<tr>
-      		<td>商品合計</td>
+      		<td class="font-weight-bold">商品合計</td>
       		<td><%= @order.total_price - @order.postage %></td>
       	</tr>
       	<tr>
-      		<td>送料</td>
+      		<td class="font-weight-bold">送料</td>
       		<td><%= @order.postage %></td>
       	</tr>
       	<tr>
-      		<td>請求金額合計</td>
-      		<td><%= @order.total_price %></td>
+      		<td class="font-weight-bold">請求金額合計</td>
+      		<td class="font-weight-bold"><%= @order.total_price %></td>
       	</tr>
       </table>
     </div>
   </div>
 </div>
+
+<%= render "layouts/footer" %>

@@ -10,6 +10,4 @@ class Cart < ApplicationRecord
     self.amount * self.item.add_tax_price
   end
 
-  validates :amount, presence: true
-
 end
