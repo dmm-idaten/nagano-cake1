@@ -6,4 +6,6 @@ class Address < ApplicationRecord
     "〒" + self.postal_code + "　" + self.address + "　" + self.name
   end
 
+  validates :postal_code,:address,:name, presence: true
+
 end
