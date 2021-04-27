@@ -11,9 +11,20 @@ class Admins::OrdersController < ApplicationController
   end
 
   def update
-	order = Order.find(params[:id])
-	order.update(order_status: params[:order][:order_status].to_i)
-	redirect_to admins_order_path(order)
+# 	order = Order.find(params[:id])
+# 	order.update(order_status: params[:order][:order_status].to_i)
+# 	redirect_to admins_order_path(order)
+
+		order = Order.find(params[:id])
+		order_details = order.order_details
+		order.update(order_status: params[:order][:order_status].to_i)
+    # order.update(order_params)
+
+		if order.order_status == "入金確認"
+			order_details.update_all(making_status: "製作待ち")
+		end
+		redirect_to admins_order_path(order.id)
+
   end
 
   private
