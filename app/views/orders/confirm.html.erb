@@ -1,14 +1,14 @@
 
 <%= render 'layouts/customer_header' %>
 
-<div class="container">
+<div class="container my-5">
 	<div class="row">
     <div class="col">
       <h2>注文情報確認</h2>
     </div>
   </div>
   <div class="row">
-  	<div class="col">
+  	<div class="col-sm-8">
   		<table class="table border">
 	      <thead>
 		      <tr>
@@ -29,28 +29,31 @@
 		      <% end %>
 	      </tbody>
       </table>
-    <div class="row">
-      <div class="col">
+    </div>
+    <div class="col-sm-4">
       <table class="table border">
       	<tr>
       		<td class = 'information border bg-light'>送料</td><td>800円</td>
+      	</tr>
+        <tr>
       		<td class = 'information border bg-light'>商品合計</td><td><%= total_price(@carts) %>円</td>
+      	</tr>
+      	<tr>
       		<td class = 'information border bg-light'>請求金額</td><td><%= total_price(@carts) + 800 %>円</td>
       	</tr>
       </table>
-      </div>
     </div>
   </div>
   <div class="row">
-  	<div class="col">
+  	<div class="col mb-3 d-flex align-items-center">
   		<h3>支払方法</h3>
-  		<div><%= @order.payment %></div>
+  		<div class="ml-4"><%= @order.payment %></div>
   	</div>
   </div>
-  <div class="row">
-  	<div class="col">
+  <div class="row mb-4">
+  	<div class="col d-flex align-items-center">
   		<h3>お届け先</h3>
-  		<div>
+  		<div class="ml-4">
   			<%= @order.shipping_postcode %>
   			<%= @order.shipping_address %>
   			<%= @order.shipping_name %>
@@ -63,10 +66,15 @@
         <%= f.hidden_field :payment, :value => @order.payment %>
         <%= f.hidden_field :postage, :value => 800 %>
         <%= f.hidden_field :total_price, :value => (total_price(@carts) + 800) %>
-        <%= link_to "注文情報入力へ戻る", new_order_path %>
-        <%= f.submit "購入を確定する" %>
-    <% end %>
-      </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-sm-3">
+      <%= link_to "注文情報入力へ戻る", new_order_path, class: "btn btn-outline-secondary" %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.submit "購入を確定する", class: "btn btn-success" %>
+      <% end %>
+    </div>
   </div>
 </div>
 
