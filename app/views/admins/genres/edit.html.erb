@@ -1,0 +1,23 @@
+
+<%= render "layouts/admin_header" %>
+
+<div class="container mb-5">
+  <div class="row my-5">
+    <h2 class="offset-1>">ジャンル編集</h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <%= form_with model: @genre, url: edit_admins_genre_path, local:true do |f| %>
+      <h4>ジャンル名</h4>
+    </div>
+    <div class="col-sm-3">
+      <%= f.text_field :name %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.submit '変更を保存', class: "px-4 btn btn-success"%>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<%= render "layouts/footer" %>

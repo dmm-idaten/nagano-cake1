@@ -1,0 +1,43 @@
+<%= render "layouts/admin_header" %>
+
+<div class="container">
+	<div class="row offset-1">
+    <div class="col-sm-2 mt-5">
+      <h2 class="d-flex justify-content-center bg-light text-dark">会員一覧</h2>
+    </div>
+  </div>
+  <div class="row offset-2">
+  	<div class="col-sm-10 mt-8">
+  		<table class="table">
+	      <thead class="bg-light text-dark">
+		      <tr>
+			      <th>会員ID</th>
+			      <th>氏名</th>
+			      <th>メールアドレス</th>
+			      <th>ステータス</th>
+		      </tr>
+	      </thead>
+	      <tbody>
+		      <% @customers.each do |customer| %>
+		        <tr>
+			        <td><%= customer.id %></td>
+			        <td>
+			        	<%= link_to admins_customer_path(customer) do %>
+			        	  <%= customer.last_name %><%= customer.first_name %>
+			        	<% end %>
+			        </td>
+			        <td><%= customer.email %></td>
+			        <td><%= customer.is_deleted %></td>
+		        </tr>
+		      <% end %>
+	      </tbody>
+      </table>
+  	</div>
+  </div>
+</div>
+  <div class="mb-4 d-flex justify-content-center">
+    <%= paginate(@customers) %>
+  </div>
+
+
+<%= render "layouts/footer" %>

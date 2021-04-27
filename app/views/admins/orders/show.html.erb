@@ -1,0 +1,103 @@
+<%= render 'layouts/admin_header' %>
+
+<div class="container my-5">
+	<div class="row">
+    <div class="col offset-1">
+      <h2>注文履歴詳細</h2>
+  	</div>
+  </div>
+  <div class="row mb-4">
+  	<div class="col mt-8">
+			<table class="table inin table-noborder">
+	      <tr>
+	      	<td class="font-weight-bold">購入者</td>
+					<td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
+	      </tr>
+	      <tr>
+	      	<td class="font-weight-bold">注文日</td>
+	      	<td><%= @order.created_at.strftime('%Y/%m/%d') %><br></td>
+	      </tr>
+	      <tr>
+	      	<td class="font-weight-bold">配送先</td>
+	      	<td>
+	      	  〒<%= @order.shipping_postcode %><br>
+	      	  <%= @order.shipping_address %><br>
+	      	  <%= @order.shipping_name %></td>
+	      	</td>
+	      </tr>
+	      <tr>
+	      	<td class="font-weight-bold">支払方法</td>
+	      	<td><%= @order.payment %></td>
+	      </tr>
+	      <tr>
+	      	<td class="font-weight-bold">注文ステータス</td>
+	      	<td>
+	      		<%= form_with model:@order, url: admins_order_path, method: :PUT, local: true do |f| %>
+	      		  <%= f.select :order_status, Order.order_statuses.map { |k, v| [t("orderes.order_status.#{k}"), v] }, :selected=> @order.order_status_before_type_cast  %>
+	      		  <%= f.submit "更新", class: "btn btn-success" %>
+	      		<% end %>
+	      	</td>
+	      </tr>
+	    </table>
+	  </div>
+	</div>
+  <div class="row d-flex align-items-end">
+	  <div class="col-mt-10">
+	    <table class="table">
+	      <thead>
+		      <tr>
+			      <th class = 'information border bg-light mx-2'>商品名</th>
+			      <th class = 'information border bg-light mx-2'>単価(税込)</th>
+			      <th class = 'information border bg-light mx-2'>数量</th>
+			      <th class = 'information border bg-light mx-2'>小計</th>
+			      <th class = 'information border bg-light mx-2'>制作ステータス</th>
+		      </tr>
+	      </thead>
+	      <tbody>
+	        <% @order_details.each do |detail| %>
+	        <tr>
+			  		<td>
+			      	<%= detail.item.name %>
+			  		</td>
+			      <td>
+			      	<%= detail.item.price %>
+			      </td>
+			      <td>
+			  			<%= detail.amount %>
+			  		</td>
+			  		<td>
+			  			<%= detail.item.price * detail.amount %>
+			  		</td>
+			  		<td>
+			  			<%= form_with model:detail, url: admins_order_details_path(detail), method: :PATCH, local: true do |f| %>
+			  			  <%= detail.making_status %>
+			  			  <%= f.hidden_field :detail_id, :value => detail.id %>
+			  			  <%= f.select :making_status, OrderDetail.making_statuses.map { |k, v| [t("orderes.order_status.#{k}"), v] }, :selected=> detail.making_status_before_type_cast %>
+	      		    <%= f.submit "更新", class: "btn btn-success" %>
+	      		  <% end %>
+			  		</td>
+		        </tr>
+	      	<% end %>
+	      </tbody>
+      </table>
+    </div>
+    <div class="col-mt-2 offset-1">
+      <table class="table inin table-noborder">
+      	<tr>
+      		<td class="font-weight-bold">商品合計</td>
+      		<td><%= @order.total_price - @order.postage %></td>
+      	</tr>
+      	<tr>
+      		<td class="font-weight-bold">送料</td>
+      		<td><%= @order.postage %></td>
+      	</tr>
+      	<tr>
+      		<td class="font-weight-bold">請求金額合計</td>
+      		<td class="font-weight-bold"><%= @order.total_price %></td>
+      	</tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%= render "layouts/footer" %>

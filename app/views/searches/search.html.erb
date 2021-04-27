@@ -1,0 +1,31 @@
+  <%= render 'layouts/customer_header' %>
+
+    <% if @datas.empty? %>
+      <h2>該当する商品はありません</h2>
+    <% end %>
+
+  <div class="container w-75 mb-5">
+  <div class="row-sm-12">
+    <div class="col">
+    <div class="col mt-4 d-flex align-items-end">
+      <h2>商品一覧</h2>
+      <h4>(全<%= @datas.count %>件)</h4>
+    </div>
+  </div>
+  <div class="row  d-flex align-items-start">
+    <% @datas.each do |data| %>
+    <div class="col-md-3 mt-3">
+      <div></div><%= attachment_image_tag(data, :image, :fill, 250, 180,  fallback: "no_image.jpeg", size:'250x180') %><br>
+      <div>
+        <%= link_to item_path(data.id) do %>
+        <%= data.name %><br>
+        <% end %>
+      </div>
+      <div>¥<%= data.price %></div>
+    </div>
+    <% end %>
+  </div>
+</div>
+</div>
+
+<%= render "layouts/footer" %>

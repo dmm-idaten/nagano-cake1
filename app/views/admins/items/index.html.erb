@@ -1,0 +1,53 @@
+<%= render "layouts/admin_header" %>
+
+<div class="container mb-2">
+  <p id="notice text-success"><%= notice %></p>
+  <div class="row my-5">
+    <div class="col-sm-2 offset-1 d-flex justify-content-center text-dark">
+      <h2>商品一覧</h2>
+    </div>
+    <div class="col offset-6">
+      <%= link_to new_admins_item_path do %>
+        <h1 class="maru border rounded-circle text-body">＋</h1>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead class="bg-light text-dark">
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜き価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+        <tr>
+          <td><%= item.id %></td>
+          <td>
+            <%= link_to admins_item_path(item) do %>
+            <%= item.name %>
+            <% end %>
+          </td>
+          <td><%= item.price %>円</td>
+          <td><%= item.genre.name %></td>
+          <% if item.is_active == "販売中" %>
+            <td class="text-success"><%= item.is_active %></td>
+          <% else %>
+            <td class="text-secondary"><%= item.is_active %></td>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+  <div class="mb-4 d-flex justify-content-center">
+    <%= paginate(@items) %>
+  </div>
+
+
+<%= render "layouts/footer" %>
